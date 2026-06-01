@@ -13,6 +13,28 @@ interface FilterPageProps {
   params: Promise<{ slug: string[] }>;
 }
 
+export const generateMetadata = async ({ params }: FilterPageProps) => {
+  const { slug } = await params;
+
+  return {
+    title: slug[0] === 'all' ? 'All Notes' : `${slug[0]} notes`,
+    description:
+      slug[0] === 'all' ? 'List of all notes' : `List of ${slug[0]} notes`,
+
+    openGraph: {
+      title: slug[0] === 'all' ? 'All Notes' : `${slug[0]} notes`,
+      description:
+        slug[0] === 'all' ? 'List of all notes' : `List of ${slug[0]} notes`,
+    },
+
+    twitter: {
+      title: slug[0] === 'all' ? 'All Notes' : `${slug[0]} notes`,
+      description:
+        slug[0] === 'all' ? 'List of all notes' : `List of ${slug[0]} notes`,
+    },
+  };
+};
+
 const FilterPage = async ({ params }: FilterPageProps) => {
   const queryClient = new QueryClient();
 
