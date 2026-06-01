@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Note } from '../types/note';
+import type { Note, TAGS } from '../types/note';
 
 interface NotehubResponse {
   notes: Note[];
@@ -25,10 +25,10 @@ const fetchNotes = async (
   search: string,
   page: number,
   perPage: number,
-  selectedTag?: string,
+  tag?: TAGS,
 ): Promise<NotehubResponse> => {
-  const { data } = await api.get<NotehubResponse>(`/notes`, {
-    params: { search, page, perPage, tag: selectedTag },
+  const { data } = await api.get<NotehubResponse>('/notes', {
+    params: { search, page, perPage, tag },
   });
 
   return data;
