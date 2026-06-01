@@ -22,7 +22,7 @@ const NoteList = ({ notes }: NoteListProps) => {
     },
   });
 
-  const handleDelete = (noteId: string) => {
+  const handleDelete = (noteId: Note['id']) => {
     mutation.mutate(noteId);
   };
 

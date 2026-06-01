@@ -33,12 +33,6 @@ export const metadata: Metadata = {
     ],
   },
 
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-
   twitter: {
     card: 'summary_large_image',
     title: 'HoteHub',
@@ -47,13 +41,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
   modal,
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en" className={roboto.variable}>
       <body>
@@ -66,4 +60,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

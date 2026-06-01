@@ -40,19 +40,6 @@ const FilterPage = async ({ params }: FilterPageProps) => {
 
   const { slug } = await params;
 
-  if (slug[0] === 'all') {
-    await queryClient.prefetchQuery({
-      queryKey: ['notes', { search: '', page: 1, perPage: 12 }],
-      queryFn: () => noteService.fetchNotes('', 1, 12),
-    });
-
-    return (
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <NotesClient tag={undefined} />
-      </HydrationBoundary>
-    );
-  }
-
   const selectedTag = slug[0] as TAGS;
 
   await queryClient.prefetchQuery({
@@ -62,7 +49,11 @@ const FilterPage = async ({ params }: FilterPageProps) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient tag={selectedTag} />
+      {slug[0] === 'all' ? (
+        <NotesClient tag={undefined} />
+      ) : (
+        <NotesClient tag={selectedTag} />
+      )}
     </HydrationBoundary>
   );
 };

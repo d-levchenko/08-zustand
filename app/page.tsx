@@ -1,6 +1,6 @@
 import css from './Home.module.css';
 
-export default function Home() {
+const Home = () => {
   return (
     <main>
       <div className={css.container}>
@@ -19,4 +19,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;
