@@ -1,5 +1,5 @@
 import NoteForm from '@/components/NoteForm/NoteForm';
-import css from './CreateNote.module.css';
+import styles from './CreateNote.module.css';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -28,12 +28,16 @@ export const metadata: Metadata = {
   },
 };
 
-const CreateNotePage = () => {
+interface CreateNotePageProps {
+  handleFormCancel: () => void;
+}
+
+const CreateNotePage = ({ handleFormCancel }: CreateNotePageProps) => {
   return (
-    <main className={css.main}>
-      <div className={css.container}>
-        <h1 className={css.title}>Create note</h1>
-        <NoteForm onCancel={() => {}} />
+    <main className={styles.main}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Create note</h1>
+        <NoteForm onCancel={handleFormCancel} />
       </div>
     </main>
   );
