@@ -1,10 +1,11 @@
+import { TAGS } from '@/types/note';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 export interface NoteFormValues {
   title: string;
   content: string;
-  tag: string;
+  tag: TAGS;
 }
 
 const initialValues: NoteFormValues = {
