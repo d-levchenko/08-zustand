@@ -1,5 +1,5 @@
 import noteService from '@/lib/api';
-import useNoteDraftStore from '@/lib/store/notsStore';
+import useNoteDraftStore from '@/lib/store/noteStore';
 
 import { QueryClient, useMutation } from '@tanstack/react-query';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
