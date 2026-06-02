@@ -17,14 +17,7 @@ const NoteDetails = ({ id }: NoteDetailsProps) => {
   });
 
   if (isLoading) return <p>Loading, please wait...</p>;
-  if (error)
-    return (
-      <p>
-        {error instanceof Error || !data
-          ? error.message
-          : 'Something went wrong'}
-      </p>
-    );
+  if (error) return <p>Could not fetch note details. </p>;
 
   return (
     <div className={css.container}>

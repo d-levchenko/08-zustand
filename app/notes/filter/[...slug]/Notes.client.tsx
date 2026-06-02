@@ -4,6 +4,7 @@ import css from './NotesPage.module.css';
 import { useState } from 'react';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useDebouncedCallback } from 'use-debounce';
+import Link from 'next/link';
 
 import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
@@ -36,8 +37,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
     placeholderData: keepPreviousData,
   });
 
-  const handleModalOpen = () => setModalOpen(true);
-
   const handleModalClose = () => setModalOpen(false);
 
   const totalPages = data?.totalPages ?? 0;
@@ -57,9 +56,9 @@ const NotesClient = ({ tag }: NotesClientProps) => {
             )}
           </>
         )}
-        <button className={css.button} onClick={handleModalOpen}>
+        <Link className={css.button} href="/notes/action/create">
           Create note +
-        </button>
+        </Link>
       </header>
       {isLoading && <div>Loading...</div>}
       {isError && <div>There is an error to load notes.</div>}
