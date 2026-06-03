@@ -39,6 +39,7 @@ const useCreateNote = (queryClient: QueryClient, router: AppRouterInstance) => {
     handleChange,
     handleFormSubmit,
     isPending: mutation.isPending,
+    draft,
   };
 };
 

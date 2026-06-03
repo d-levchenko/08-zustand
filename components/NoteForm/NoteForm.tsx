@@ -10,12 +10,12 @@ const NoteForm = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
 
-  const { handleChange, handleFormSubmit, isPending } = useCreateNote(
+  const onCancel = () => router.back();
+
+  const { handleChange, handleFormSubmit, isPending, draft } = useCreateNote(
     queryClient,
     router,
   );
-
-  const onCancel = () => router.back();
 
   return (
     <form className={css.form} action={handleFormSubmit}>
@@ -27,6 +27,7 @@ const NoteForm = () => {
           type="text"
           name="title"
           className={css.input}
+          value={draft.title}
         />
         <span className={css.error} />
       </div>
@@ -39,6 +40,7 @@ const NoteForm = () => {
           name="content"
           rows={8}
           className={css.textarea}
+          value={draft.content}
         />
         <span className={css.error} />
       </div>
@@ -49,7 +51,8 @@ const NoteForm = () => {
           onChange={handleChange}
           id="tag"
           name="tag"
-          className={css.select}>
+          className={css.select}
+          value={draft.tag}>
           <option value="Todo">Todo</option>
           <option value="Work">Work</option>
           <option value="Personal">Personal</option>
