@@ -3,6 +3,7 @@ import {
   QueryClient,
   HydrationBoundary,
 } from '@tanstack/react-query';
+import { Metadata } from 'next';
 
 import noteService from '@/lib/api';
 import NotesClient from './Notes.client';
@@ -13,7 +14,9 @@ interface FilterPageProps {
   params: Promise<{ slug: string[] }>;
 }
 
-export const generateMetadata = async ({ params }: FilterPageProps) => {
+export const generateMetadata = async ({
+  params,
+}: FilterPageProps): Promise<Metadata> => {
   const { slug } = await params;
 
   return {

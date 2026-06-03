@@ -6,19 +6,16 @@ import css from './NoteForm.module.css';
 import { useRouter } from 'next/navigation';
 import useCreateNote from '@/hooks/useCreateNote';
 
-interface NoteFormProps {
-  onCancel: () => void;
-}
-
-const NoteForm = ({ onCancel }: NoteFormProps) => {
+const NoteForm = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
 
   const { handleChange, handleFormSubmit, isPending } = useCreateNote(
-    onCancel,
     queryClient,
     router,
   );
+
+  const onCancel = () => router.back();
 
   return (
     <form className={css.form} action={handleFormSubmit}>

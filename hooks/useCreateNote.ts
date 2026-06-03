@@ -4,18 +4,13 @@ import useNoteDraftStore from '@/lib/store/noteStore';
 import { QueryClient, useMutation } from '@tanstack/react-query';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
-const useCreateNote = (
-  onCancel: () => void,
-  queryClient: QueryClient,
-  router: AppRouterInstance,
-) => {
+const useCreateNote = (queryClient: QueryClient, router: AppRouterInstance) => {
   const { draft, setDraft, clearDraft } = useNoteDraftStore();
 
   const mutation = useMutation({
     mutationFn: noteService.createNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
-      onCancel();
       clearDraft();
       router.push('/notes/filter/all');
     },

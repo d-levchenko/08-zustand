@@ -9,8 +9,6 @@ import Link from 'next/link';
 import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
-import NoteForm from '@/components/NoteForm/NoteForm';
-import Modal from '@/components/Modal/Modal';
 
 import type { TAGS } from '@/types/note';
 
@@ -23,7 +21,6 @@ type NotesClientProps = {
 const NotesClient = ({ tag }: NotesClientProps) => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
-  const [modalOpen, setModalOpen] = useState(false);
   const PER_PAGE = 12;
 
   const debouncedSearch = useDebouncedCallback((value: string) => {
@@ -36,8 +33,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
     queryFn: () => noteService.fetchNotes(search, page, PER_PAGE, tag),
     placeholderData: keepPreviousData,
   });
-
-  const handleModalClose = () => setModalOpen(false);
 
   const totalPages = data?.totalPages ?? 0;
 
@@ -63,11 +58,6 @@ const NotesClient = ({ tag }: NotesClientProps) => {
       {isLoading && <div>Loading...</div>}
       {isError && <div>There is an error to load notes.</div>}
       {data && data.notes.length > 0 && <NoteList notes={data.notes} />}
-      {modalOpen && (
-        <Modal onClose={handleModalClose}>
-          <NoteForm onCancel={handleModalClose} />
-        </Modal>
-      )}
     </div>
   );
 };

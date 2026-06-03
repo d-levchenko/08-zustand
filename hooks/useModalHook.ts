@@ -31,7 +31,7 @@ const useModalHook = ({ onClose }: UseModalHookProps) => {
     backdropProps: {
       onClick: handleBackdropClick,
       role: 'dialog',
-      ariaModal: true,
+      'aria-modal': true,
     },
   };
 };

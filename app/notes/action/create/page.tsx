@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Create note',
     description: 'Create note',
     url: 'https://notehub.app/notes/action/create',
-    siteName: 'HoteHub',
+    siteName: 'NoteHub',
 
     images: [
       {
@@ -28,16 +28,12 @@ export const metadata: Metadata = {
   },
 };
 
-interface CreateNotePageProps {
-  handleFormCancel: () => void;
-}
-
-const CreateNotePage = ({ handleFormCancel }: CreateNotePageProps) => {
+const CreateNotePage = () => {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
         <h1 className={styles.title}>Create note</h1>
-        <NoteForm onCancel={handleFormCancel} />
+        <NoteForm />
       </div>
     </main>
   );

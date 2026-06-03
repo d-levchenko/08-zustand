@@ -15,16 +15,16 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'HoteHub',
+  title: 'NoteHub',
   description:
     'NoteHub is a simple and efficient application designed for managing personal notes. It helps keep your thoughts organized and accessible in one place, whether you are at home or on the go.',
 
   openGraph: {
-    title: 'HoteHub',
+    title: 'NoteHub',
     description:
       'NoteHub is a simple and efficient application designed for managing personal notes. It helps keep your thoughts organized and accessible in one place, whether you are at home or on the go.',
     url: 'https://notehub.app',
-    siteName: 'HoteHub',
+    siteName: 'NoteHub',
     images: [
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'HoteHub',
+    title: 'NoteHub',
     description:
       'NoteHub is a simple and efficient application designed for managing personal notes. It helps keep your thoughts organized and accessible in one place, whether you are at home or on the go.',
   },
